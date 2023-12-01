@@ -1,9 +1,9 @@
-const { log } = require('console');
+const { log, error } = require('console');
 const fs = require('fs');
 
 fs.readFile('./input.txt', 'utf-8', (err, data) => {
     if (err) {
-        console.error('Error reading the file:', err);
+        error('Error reading the file:', err);
         return;
     }
 
@@ -17,29 +17,39 @@ fs.readFile('./input.txt', 'utf-8', (err, data) => {
             return; // Skip empty lines
         }
 
-        let firstDigitIndex = -1;
+        //let firstDigitIndex = -1;
         let firstDigit = null;
         let secondDigit = null;
+        
+        
+        let number;
 
         // Find the first digit
         for (let i = 0; i < line.length; i++) {
             if (!isNaN(parseInt(line[i], 10))) {
                 firstDigit = line[i];
-                firstDigitIndex = i;
+                //firstDigitIndex = i;
                 break;
             }
         }
 
         // Find the second digit by looping backwards
-        for (let i = line.length - 1; i > firstDigitIndex; i--) {
+        for (let i = line.length - 1; i < line.length; i--) {
             if (!isNaN(parseInt(line[i], 10))) {
                 secondDigit = line[i];
                 break;
             }
         }
 
-        console.log('Line:', line, 'First Digit:', firstDigit, 'Second Digit:', secondDigit);
+        
+            
+        number = parseInt(firstDigit + secondDigit, 10); // Concatenate if both digits exist
+        
+
+        sum += number;
+        log('Total Sum:', sum);
+        log('Line:', line, 'First Digit:', firstDigit, 'Second Digit:', secondDigit);
     });
 
-    console.log('Total Sum:', sum);
+    
 });
