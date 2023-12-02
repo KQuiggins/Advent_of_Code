@@ -20,8 +20,8 @@ fs.readFile('./input.txt', 'utf-8', (err, data) => {
         //let firstDigitIndex = -1;
         let firstDigit = null;
         let secondDigit = null;
-        
-        
+
+
         let number;
 
         // Find the first digit
@@ -41,15 +41,16 @@ fs.readFile('./input.txt', 'utf-8', (err, data) => {
             }
         }
 
-        
-            
-        number = parseInt(firstDigit + secondDigit, 10); // Concatenate if both digits exist
-        
+
+        log('First Digit:', firstDigit, 'Second Digit:', secondDigit);
+        number = parseInt(firstDigit + secondDigit, 10);
+
+
 
         sum += number;
         log('Total Sum:', sum);
         log('Line:', line, 'First Digit:', firstDigit, 'Second Digit:', secondDigit);
     });
 
-    
+
 });
